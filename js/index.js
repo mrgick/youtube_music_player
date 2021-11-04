@@ -2,17 +2,13 @@ let next_recomended_video
 
 async function set_video() {
 
-    let ytdl = window.require('ytdl-core-browser')({
-        proxyUrl: 'https://ytdlcors.herokuapp.com/'
-    });
-
     let url = video_url_yt.value ? video_url_yt.value : null
 
     if (url == null) {
         return
     }
 
-    let video = await get_data_from_video(url, ytdl)
+    let video = await get_data_from_video(url)
     if (video == null) {
         return
     }
