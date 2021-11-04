@@ -3,7 +3,7 @@ let next_recomended_video
 async function set_video() {
 
     let ytdl = window.require('ytdl-core-browser')({
-        proxyUrl: 'https://cors-anywhere.herokuapp.com/'
+        proxyUrl: 'https://ytdlcors.herokuapp.com/'
     });
 
     let url = video_url_yt.value ? video_url_yt.value : null
