@@ -29,22 +29,35 @@ async function get_data_from_video(url) {
     }
 }
 
-let CORS_set = 0
-function get_ytdl(error = false) {
+async function get_playlist(url) {
 
-    const CORS = [
-        'https://ytdlcors.herokuapp.com/',
-        'https://cors-anywhere.herokuapp.com/'
-    ]
+    let info,
+        ytpl = get_ytpl()
 
-    if (error) {
-        ++CORS_set
-        if (CORS_set > CORS.length) {
-            CORS_set = CORS[0]
-        }
+    try {
+        info = await ytpl(url)
+    } catch (error) {
+        console.log(error)
+        ytdl = get_ytpl(error = true)
+        info = await ytpl(url)
     }
 
-    return window.require('ytdl-core-browser')({
-        proxyUrl: CORS[CORS_set]
-    });
+    console.log(info);
+    return info
+}
+
+async function search_youtube(word) {
+    let info,
+        ytsr = get_ytsr()
+
+    try {
+        info = await ytsr(word)
+    } catch (error) {
+        console.log(error)
+        ytdl = get_ytsr(error = true)
+        info = await ytsr(word)
+    }
+
+    console.log(info);
+    return info
 }
