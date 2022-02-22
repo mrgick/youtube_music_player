@@ -1,5 +1,6 @@
 
 const CORS = [
+    'https://youtube-cores.herokuapp.com/',
     'https://ytdlcors.herokuapp.com/',
     'https://cors-anywhere.herokuapp.com/'
 ]
