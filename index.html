@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/ytdl-core-info-browser@1.0.2/dist/ytpl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ytdl-core-info-browser@1.0.2/dist/ytsr.js"></script>
     <script src="js/cors.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/index.js" defer></script>
     <script src="js/yt_tools.js"></script>
     <title>Youtube music player</title>
 </head>
@@ -17,12 +17,31 @@
         <input id="video_url_yt" type="text">
         <button onclick="set_video()">set video</button>
     </div>
-    <div>
-        <label id="title_player">title</label>
-        <br>
-        <img id="image_player" src="" alt="image yt" height="188" width="336">
-        <br>
-        <audio id="audio_player" controls src=""</audio>
+    <div class="music_player">
+        <audio id="audio_player"></audio>
+        <div class="music_info">
+            <div>
+                <label id="title_player">title</label>
+            </div>
+            <div>
+                <img id="image_player" src="" alt="image yt" height="188" width="336">
+            </div>
+        </div>
+        <div class="controls">
+            progress
+            <div>
+                <input id="progress_bar" type="range" min="0" max="100" style="width:300px;" value="0">
+            </div>
+            <div>
+                <button id="btn_prev">prev</button>
+                <button id="btn_stop_play">stop/play</button>
+                <button id="btn_next">next</button>
+            </div>
+            sound
+            <div>
+                <input id="volume_control" type="range" min="0" max="1000" step="1" style="width:300px;">
+            </div>
+        </div>
     </div>
 </body>
 
