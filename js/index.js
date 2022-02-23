@@ -14,11 +14,32 @@ async function set_video() {
         return
     }
 
+    url = CORS[0] + video.audio
+
+    let r = await fetch(url);
+    if (!r.ok) {
+        console.log(r);
+        find_next_video(false, true)
+    }
+
+    /*
+    fetch(url)
+    .then(r => r.arrayBuffer()) // request as ArrayBuffer
+    .then(buffer => {
+        audio_player.src = URL.createObjectURL(new Blob([buffer]));
+        const ctx = new AudioContext();
+        return ctx.decodeAudioData(buffer);
+    })
+    .then(console.log);
+    */
+
+
     console.log(video);
+    progress_bar.value = 0
     title_player.innerHTML = video.title
     image_player.src = video.image.url
     next_video = video.next
-    audio_player.src = video.audio
+    audio_player.src = url;
     audio_player.play()
     set_volume()
 }
@@ -34,7 +55,7 @@ function find_next_video(prev = false, next = false) {
     else if (next && next_video != '') {
         if (video_url_yt.value) {
             prev_video = video_url_yt.value.split('=')[1]
-        } 
+        }
         video_url_yt.value = 'https://www.youtube.com/watch?v=' + next_video
         set_video()
     }
