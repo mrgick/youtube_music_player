@@ -28,36 +28,3 @@ async function get_data_from_video(url) {
         return null
     }
 }
-
-async function get_playlist(url) {
-
-    let info,
-        ytpl = get_ytpl()
-
-    try {
-        info = await ytpl(url)
-    } catch (error) {
-        console.log(error)
-        ytdl = get_ytpl(error = true)
-        info = await ytpl(url)
-    }
-
-    console.log(info);
-    return info
-}
-
-async function search_youtube(word) {
-    let info,
-        ytsr = get_ytsr()
-
-    try {
-        info = await ytsr(word)
-    } catch (error) {
-        console.log(error)
-        ytdl = get_ytsr(error = true)
-        info = await ytsr(word)
-    }
-
-    console.log(info);
-    return info
-}
